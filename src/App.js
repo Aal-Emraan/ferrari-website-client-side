@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
+import AllCars from "./Pages/AllCars/AllCars";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home></Home>
+            </Route>
+            <Route path="/allcars">
+              <AllCars></AllCars>
             </Route>
             <Route path="/login">
               <Login></Login>

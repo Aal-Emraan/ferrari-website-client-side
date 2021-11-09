@@ -1,17 +1,17 @@
 import * as React from "react";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor: '#AD0C0C'}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -22,13 +22,27 @@ const Navigation = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            Ferrari
           </Typography>
-          <NavLink to="/" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Home</Button></NavLink>
-          <NavLink to="/login" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Login</Button></NavLink>
-          <NavLink to="/signup" style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Sign Up</Button></NavLink>
-          
+          <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
+            <Button color="inherit">Home</Button>
+          </NavLink>
+          <NavLink to="/allcars" style={{ textDecoration: "none", color: "white" }}>
+            <Button color="inherit">All Cars</Button>
+          </NavLink>
+          <NavLink
+            to="/login"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <Button color="inherit">Login</Button>
+          </NavLink>
+          <NavLink
+            to="/signup"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <Button color="inherit">Sign Up</Button>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </Box>
