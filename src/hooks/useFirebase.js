@@ -9,6 +9,7 @@ const useFirebase = () => {
     // --------- All states here ----------
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     //-------------------------------------
 
 
@@ -47,11 +48,12 @@ const useFirebase = () => {
 
     // google sign in
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = (history, location) => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
         .then(result => {
-
+            const redirect_uri = location.state.from || '/';
+            history.replace(redirect_uri);
         })
         .catch(error => {
             setError(error.message);
@@ -75,11 +77,14 @@ const useFirebase = () => {
 
     // ------------ track user changes -------
     useEffect(() => {
+        setIsLoading(true);
         onAuthStateChanged(auth, user => {
             if(user){
                 setUser(user);
+                setIsLoading(false)
             }else{
                 setUser({});
+                setIsLoading(true);
             }
         })
     },[auth])
@@ -87,6 +92,7 @@ const useFirebase = () => {
     return {
         user,
         error,
+        isLoading,
         login,
         emailAndPasswordSignIn,
         signInWithGoogle,

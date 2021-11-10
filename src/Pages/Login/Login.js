@@ -1,10 +1,13 @@
 import { Button, Container, Paper, TextField, Typography, Box } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const {login, signInWithGoogle} = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+
   const handleLoginSubmit = (e) => {
     login();
     e.preventDefault();
@@ -34,7 +37,7 @@ const Login = () => {
         <Link to="/signup" sx={{}}>New User? Sign Up</Link>
         <Typography variant="h6" sx={{my:5}}>----------- OR -------------</Typography>
         <Box>
-            <Button variant="outlined" onClick={signInWithGoogle}>Google Sign in</Button>
+            <Button variant="outlined" onClick={() =>signInWithGoogle(history, location)}>Google Sign in</Button>
         </Box>
       </Paper>
     </Container>
