@@ -37,6 +37,13 @@ const useFirebase = () => {
                 displayName: name
             })
             console.log(result.user);
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                  'content-type':'application/json'
+                },
+                body: JSON.stringify({displayName:name, email})
+              })
             history.replace('/');
         })
         .catch(error => {
