@@ -34,6 +34,7 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddProduct from './AddProduct/AddProduct';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
+import logo from '../../img/logo.png'
 
 const drawerWidth = 240;
 
@@ -66,9 +67,14 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar style={{background: '#AD0C0C'}}>
+          <Box style={{display: 'flex', alignItems: 'center', color: 'white'}}>
+              <img src={logo} alt="logo" style={{width: '30%'}} />
+              <Typography variant="h4">Ferrari</Typography>
+          </Box>
+      </Toolbar>
       <Divider />
-            <Link to="/" style={{display: 'flex', alignItems: 'center',margin: '0 15px', color: 'red', textDecoration: 'none'}}>
+            <Link to="/" style={{display: 'flex', alignItems: 'center',margin: '0 15px', color: '#AD0C0C', textDecoration: 'none'}}>
                     <HomeIcon/>
                     <Typography variant="h6" sx={{ml:4}}>Home</Typography>
             </Link>
@@ -162,7 +168,7 @@ function Dashboard(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
         <Switch>
