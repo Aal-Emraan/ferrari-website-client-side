@@ -30,12 +30,14 @@ const useFirebase = () => {
 
     // email password sign in
 
-    const emailAndPasswordSignIn = (email, password, name) => {
+    const emailAndPasswordSignIn = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             updateProfile(auth.currentUser, {
                 displayName: name
             })
+            console.log(result.user);
+            history.replace('/');
         })
         .catch(error => {
             setError(error.message);

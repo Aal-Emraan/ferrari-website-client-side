@@ -1,12 +1,13 @@
 import {Button,Container,TextField,Typography,Box,Paper, Alert,} from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const {user,emailAndPasswordSignIn, signInWithGoogle} = useAuth();
   const [signInInfo, setSignInInfo] = useState({});
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const history = useHistory();
 
 
   const handleOnBlur = e => {
@@ -22,7 +23,7 @@ const SignUp = () => {
       setPasswordMatch(false);
       return
     }
-    emailAndPasswordSignIn(signInInfo.email, signInInfo.password, signInInfo.displayName);
+    emailAndPasswordSignIn(signInInfo.email, signInInfo.password, signInInfo.displayName, history);
     console.log(user);
   };
 

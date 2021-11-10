@@ -44,6 +44,7 @@ const Navigation = () => {
           >
             <Button color="inherit">Dashboard</Button>
           </NavLink>
+          <Typography variant="h6" sx={{mx:1}}>{user?.displayName}</Typography>
             <Button variant="contained" onClick={logout}>Log Out</Button>
             </>
             :
