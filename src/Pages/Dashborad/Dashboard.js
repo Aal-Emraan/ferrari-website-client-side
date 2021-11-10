@@ -6,12 +6,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -22,6 +20,20 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
+import {
+    Switch,
+    Route,
+    Link,
+    useRouteMatch
+  } from "react-router-dom";
+import MyOrders from './MyOrders/MyOrders';
+import Pay from './Pay/Pay';
+import AddReview from './AddReview/AddReview';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
+import AddProduct from './AddProduct/AddProduct';
+import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
+import ManageProducts from './ManageProducts/ManageProducts';
 
 const drawerWidth = 240;
 
@@ -29,23 +41,25 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const { path, url } = useRouteMatch();
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const userOptions = [
-      {name: "Pay", icon: <PaymentsIcon/>},
-      {name: "My Orders", icon: <AddShoppingCartIcon/>},
-      {name: "Review", icon: <ReviewsIcon/>},
-      {name: "Logout", icon: <ExitToAppIcon/>}
+      {name: "Pay", icon: <PaymentsIcon/>, to: `${url}/pay`},
+      {name: "My Orders", icon: <AddShoppingCartIcon/>, to: `${url}/myorders`},
+      {name: "Review", icon: <ReviewsIcon/>, to: `${url}/review`},
+      {name: "Logout", icon: <ExitToAppIcon/>, to: `${url}`}
   ]
 
   const adminOptions = [
-      {name: 'Manage All Orders', icon: <SettingsIcon/>},
-      {name: 'Add a Product', icon: <AddShoppingCartIcon/> },
-      {name: 'Make Admin', icon: <ManageAccountsIcon/>},
-      {name: 'Manage Products', icon: <SettingsApplicationsIcon/>},
-      {name: 'Log Out', icon: <ExitToAppIcon/>},
+      {name: 'Manage All Orders', icon: <SettingsIcon/>, to: `${url}/manageallorders`},
+      {name: 'Add a Product', icon: <AddShoppingCartIcon/>, to: `${url}/addproduct` },
+      {name: 'Make Admin', icon: <ManageAccountsIcon/>, to: `${url}/makeadmin`},
+      {name: 'Manage Products', icon: <SettingsApplicationsIcon/>, to: `${url}/manageproducts`},
+      {name: 'Log Out', icon: <ExitToAppIcon/>, to: `${url}`},
   ]
 
 //   ['Pay', 'My Orders', 'Review', 'Log Out']
@@ -54,25 +68,34 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
+            <Link to="/" style={{display: 'flex', alignItems: 'center',margin: '0 15px', color: 'red', textDecoration: 'none'}}>
+                    <HomeIcon/>
+                    <Typography variant="h6" sx={{ml:4}}>Home</Typography>
+            </Link>
       <List>
+ 
         {userOptions.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {text.icon}
-            </ListItemIcon>
-            <ListItemText primary={text.name} />
-          </ListItem>
+            <Link to={text.to}>
+                <ListItem button key={text}>
+                    <ListItemIcon>
+                    {text.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text.name} />
+                </ListItem>
+            </Link>
         ))}
       </List>
       <Divider />
       <List>
         {adminOptions.map((text, index) => (
-          <ListItem button key={index}>
-            <ListItemIcon>
-              {text.icon}
-            </ListItemIcon>
-            <ListItemText primary={text.name} />
-          </ListItem>
+            <Link to={text.to}>
+                <ListItem button key={index}>
+                    <ListItemIcon>
+                    {text.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text.name} />
+                </ListItem>
+          </Link>
         ))}
       </List>
     </div>
@@ -142,33 +165,29 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Switch>
+        <Route exact path={`${path}/pay`}>
+            <Pay></Pay>
+        </Route>
+        <Route path={`${path}/myorders`}>
+            <MyOrders></MyOrders>
+        </Route>
+        <Route path={`${path}/review`}>
+            <AddReview></AddReview>
+        </Route>
+        <Route path={`${path}/makeadmin`}>
+            <MakeAdmin></MakeAdmin>
+        </Route>
+        <Route path={`${path}/addproduct`}>
+            <AddProduct></AddProduct>
+        </Route>
+        <Route path={`${path}/manageallorders`}>
+            <ManageAllOrders></ManageAllOrders>
+        </Route>
+        <Route path={`${path}/manageproducts`}>
+            <ManageProducts></ManageProducts>
+        </Route>
+      </Switch>
       </Box>
     </Box>
   );
