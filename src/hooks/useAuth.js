@@ -1,16 +1,8 @@
-import React, { createContext } from 'react';
-import useFirebase from './useFirebase';
+import { useContext } from "react"
+import { AuthContext } from "../contexts/AuthContext"
 
-export const AuthContext = createContext();
-
-const useAuth = ({children}) => {
-    const allContext = useFirebase();
-    return (
-        <AuthContext.Provider value={allContext}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
+const useAuth = () => {
+    return useContext(AuthContext);
+}
 
 export default useAuth;

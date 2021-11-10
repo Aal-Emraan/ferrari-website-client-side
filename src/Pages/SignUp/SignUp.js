@@ -1,21 +1,19 @@
-import {
-  Button,
-  Container,
-  TextField,
-  Typography,
-  Box,
-  Paper,
-} from "@mui/material";
+import {Button,Container,TextField,Typography,Box,Paper,} from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
+  const {user,emailAndPasswordSignIn, signInWithGoogle} = useAuth();
   const handleSignUpSubmit = (e) => {
+    emailAndPasswordSignIn();
     e.preventDefault();
   };
 
+  console.log(user);
+
   return (
-    <Container>
+    <Container style={{textAlign: 'center'}}>
       <Paper variant="outlined" sx={{my:5, py:5}}>
           <Typography variant="h4">Sign Up</Typography>
         <form onSubmit={handleSignUpSubmit}>
@@ -50,7 +48,7 @@ const SignUp = () => {
           ----------- OR -------------
         </Typography>
         <Box>
-          <Button variant="outlined">Google Sign in</Button>
+          <Button variant="outlined" onClick={signInWithGoogle}>Google Sign in</Button>
         </Box>
       </Paper>
     </Container>

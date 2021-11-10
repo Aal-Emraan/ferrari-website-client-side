@@ -1,9 +1,10 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Rating, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Car = ({ car }) => {
   return (
-    <Grid item sm={6} md={4}>
+    <Grid item xs={6} md={4}>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
@@ -18,9 +19,9 @@ const Car = ({ car }) => {
             {car.description.slice(0,130)}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+        <CardActions style={{display: 'flex', justifyContent: 'space-between'}}>
+          <Link to="/cardetails"><Button size="small">See Details</Button></Link>
+          <Rating name="read-only" value={4} readOnly />
         </CardActions>
       </Card>
     </Grid>

@@ -1,16 +1,18 @@
 import "./App.css";
-import { AuthContext } from "./hooks/useAuth";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 import AllCars from "./Pages/AllCars/AllCars";
+import CarDetails from "./Pages/Shared/CarDetails/CarDetails";
+import AuthProvider from "./contexts/AuthContext";
+import PrivateRoute from "./PrivateRoutes/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
     <div className="App">
-      <AuthContext.Provider>
+      <AuthProvider>
         <BrowserRouter>
         <Navigation/>
           <Switch>
@@ -20,6 +22,9 @@ function App() {
             <Route path="/allcars">
               <AllCars></AllCars>
             </Route>
+            <PrivateRoute path="/cardetails">
+              <CarDetails></CarDetails>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>
@@ -28,7 +33,7 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-      </AuthContext.Provider>
+      </AuthProvider>
     </div>
   );
 }
