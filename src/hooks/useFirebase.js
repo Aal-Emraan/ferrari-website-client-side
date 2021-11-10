@@ -1,4 +1,4 @@
-import {GoogleAuthProvider, getAuth,signInWithEmailAndPassword , createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut  } from "firebase/auth";
+import {GoogleAuthProvider, getAuth,signInWithEmailAndPassword , createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged, updateProfile, signOut  } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/firebase.init";
 
@@ -11,12 +11,6 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     //-------------------------------------
-
-
-    // ----------- get all cars ----------
-
-
-    // ------------- * -------------------
 
     // -------------- Login with email and password -----------
     const login = (email, password) => {
@@ -36,10 +30,12 @@ const useFirebase = () => {
 
     // email password sign in
 
-    const emailAndPasswordSignIn = (email, password) => {
+    const emailAndPasswordSignIn = (email, password, name) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
-
+            updateProfile(auth.currentUser, {
+                displayName: name
+            })
         })
         .catch(error => {
             setError(error.message);

@@ -8,6 +8,7 @@ import AllCars from "./Pages/AllCars/AllCars";
 import CarDetails from "./Pages/Shared/CarDetails/CarDetails";
 import AuthProvider from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute/PrivateRoute";
+import Dashboard from "./Pages/Dashborad/Dashboard";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <PrivateRoute path="/cardetails">
               <CarDetails></CarDetails>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>

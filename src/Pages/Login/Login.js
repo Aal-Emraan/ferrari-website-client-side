@@ -1,15 +1,26 @@
 import { Button, Container, Paper, TextField, Typography, Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+
   const {login, signInWithGoogle} = useAuth();
+  const [loginInfo, setLoginInfo] = useState({});
+
   const history = useHistory();
   const location = useLocation();
 
+  const handleOnBlur = e => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginInfo = {...loginInfo};
+    newLoginInfo[field] = value;
+    setLoginInfo(newLoginInfo);
+  }
+
   const handleLoginSubmit = (e) => {
-    login();
+    login(loginInfo.email, loginInfo.password);
     e.preventDefault();
   };
 
@@ -21,12 +32,16 @@ const Login = () => {
           <TextField
             label="Email"
             type="email"
+            name="email"
+            onBlur={handleOnBlur}
             variant="standard"
             sx={{ width: "75%", mb:5 }}
           />
           <TextField
             label="Password"
             type="password"
+            name="password"
+            onBlur={handleOnBlur}
             variant="standard"
             sx={{ width: "75%", mb:5 }}
           />

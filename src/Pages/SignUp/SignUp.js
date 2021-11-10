@@ -1,16 +1,30 @@
-import {Button,Container,TextField,Typography,Box,Paper,} from "@mui/material";
-import React from "react";
+import {Button,Container,TextField,Typography,Box,Paper, Alert,} from "@mui/material";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const {user,emailAndPasswordSignIn, signInWithGoogle} = useAuth();
-  const handleSignUpSubmit = (e) => {
-    emailAndPasswordSignIn();
-    e.preventDefault();
-  };
+  const [signInInfo, setSignInInfo] = useState({});
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
-  console.log(user);
+
+  const handleOnBlur = e => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newSignInInfo = {...signInInfo};
+    newSignInInfo[field] = value;
+    setSignInInfo(newSignInInfo);
+  }
+  const handleSignUpSubmit = (e) => {
+    e.preventDefault();
+    if(signInInfo.password !== signInInfo.password2){
+      setPasswordMatch(false);
+      return
+    }
+    emailAndPasswordSignIn(signInInfo.email, signInInfo.password, signInInfo.displayName);
+    console.log(user);
+  };
 
   return (
     <Container style={{textAlign: 'center'}}>
@@ -19,26 +33,40 @@ const SignUp = () => {
         <form onSubmit={handleSignUpSubmit}>
           <TextField
             label="Name"
+            name="displayName"
             variant="standard"
+            onBlur={handleOnBlur}
             sx={{ width: "75%", mb: 5 }}
           />
           <TextField
             label="Email"
+            name="email"
             type="email"
             variant="standard"
+            onBlur={handleOnBlur}
             sx={{ width: "75%", mb: 5 }}
           />
-          <TextField label="Password" type="password" variant="standard"  sx={{ width: "75%", mb:5 }}/>
+          <TextField
+          label="Password"
+          name="password"
+          type="password"
+          variant="standard" 
+          onBlur={handleOnBlur}
+          sx={{ width: "75%", mb:5 }}
+          />
           <TextField
             label="Re-enter password"
+            name="password2"
             type="password"
             variant="standard"
-            sx={{ width: "75%", mb: 5 }}
+            onBlur={handleOnBlur}
+            sx={{ width: "75%" }}
           />
+          {passwordMatch || <Alert severity="error" sx={{mt:1, width: "73%", mx: 'auto' }}>Password didn't match!</Alert>}
           <Button
             type="submit"
             variant="contained"
-            sx={{ width: "75%", mb: 5 }}
+            sx={{ width: "75%", my: 5 }}
           >
             Sign Up
           </Button>
