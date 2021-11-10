@@ -8,6 +8,12 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     //-------------------------------------
 
+
+    // ----------- get all cars ----------
+
+
+    // ------------- * -------------------
+
     // -------------- Login with email and password -----------
     const login = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
