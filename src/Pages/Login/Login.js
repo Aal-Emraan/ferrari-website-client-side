@@ -20,7 +20,7 @@ const Login = () => {
   }
 
   const handleLoginSubmit = (e) => {
-    login(loginInfo.email, loginInfo.password);
+    login(loginInfo.email, loginInfo.password, history, location);
     e.preventDefault();
   };
 

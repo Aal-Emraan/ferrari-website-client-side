@@ -14,11 +14,13 @@ const useFirebase = () => {
     //-------------------------------------
 
     // -------------- Login with email and password -----------
-    const login = (email, password) => {
+    const login = (email, password, history, location) => {
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
             // const user = result.user;
             // setUser(result.user);
+            const redirect_uri = location?.state?.from || '/';
+            history.push(redirect_uri);
         })
         .catch(error => {
             setError(error.message);
@@ -66,8 +68,12 @@ const useFirebase = () => {
                 },
                 body: JSON.stringify({displayName: result.user.displayName, email: result.user.email})
               })
-            const redirect_uri = location.state.from || '/';
-            history.replace(redirect_uri);
+              .then(res => {
+                const redirect_uri = location?.state?.from || '/';
+                history.replace(redirect_uri);
+              })
+            // const redirect_uri = location.state.from || '/';
+            // history.replace(redirect_uri);
         })
         .catch(error => {
             setError(error.message);
