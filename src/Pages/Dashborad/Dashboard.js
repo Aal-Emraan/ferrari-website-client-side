@@ -35,12 +35,14 @@ import AddProduct from './AddProduct/AddProduct';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
 import logo from '../../img/logo.png'
+import useAuth from '../../hooks/useAuth';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {isAdmin, logout} = useAuth();
 
   const { path, url } = useRouteMatch();
 
@@ -51,16 +53,14 @@ function Dashboard(props) {
   const userOptions = [
       {name: "Pay", icon: <PaymentsIcon/>, to: `${url}/pay`},
       {name: "My Orders", icon: <AddShoppingCartIcon/>, to: `${url}/myorders`},
-      {name: "Review", icon: <ReviewsIcon/>, to: `${url}/review`},
-      {name: "Logout", icon: <ExitToAppIcon/>, to: `${url}`}
+      {name: "Review", icon: <ReviewsIcon/>, to: `${url}/review`}
   ]
 
   const adminOptions = [
       {name: 'Manage All Orders', icon: <SettingsIcon/>, to: `${url}/manageallorders`},
       {name: 'Add a Product', icon: <AddShoppingCartIcon/>, to: `${url}/addproduct` },
       {name: 'Make Admin', icon: <ManageAccountsIcon/>, to: `${url}/makeadmin`},
-      {name: 'Manage Products', icon: <SettingsApplicationsIcon/>, to: `${url}/manageproducts`},
-      {name: 'Log Out', icon: <ExitToAppIcon/>, to: `${url}`},
+      {name: 'Manage Products', icon: <SettingsApplicationsIcon/>, to: `${url}/manageproducts`}
   ]
 
 //   ['Pay', 'My Orders', 'Review', 'Log Out']
@@ -78,8 +78,17 @@ function Dashboard(props) {
                     <HomeIcon/>
                     <Typography variant="h6" sx={{ml:4}}>Home</Typography>
             </Link>
+            <Link to="/dashboard">
+                <ListItem button>
+                    <ListItemIcon>
+                    <ExitToAppIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Dashboard"/>
+                </ListItem>
+      </Link>
+      {!isAdmin ? 
+      <>
       <List>
- 
         {userOptions.map((text, index) => (
             <Link to={text.to}>
                 <ListItem button key={text}>
@@ -91,7 +100,17 @@ function Dashboard(props) {
             </Link>
         ))}
       </List>
-      <Divider />
+      <Link to="/" onClick={logout}>
+                <ListItem button>
+                    <ListItemIcon>
+                    <ExitToAppIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Logout"/>
+                </ListItem>
+      </Link>
+      </>
+      :
+      <>
       <List>
         {adminOptions.map((text, index) => (
             <Link to={text.to}>
@@ -104,6 +123,15 @@ function Dashboard(props) {
           </Link>
         ))}
       </List>
+      <Link to="/" onClick={logout}>
+                <ListItem button>
+                    <ListItemIcon>
+                    <ExitToAppIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Logout"/>
+                </ListItem>
+      </Link>
+      </>}
     </div>
   );
 
@@ -171,7 +199,11 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
+        
         <Switch>
+        <Route exact path="/dashboard">
+          <Typography variant="h5">Hello bro</Typography>
+        </Route>
         <Route exact path={`${path}/pay`}>
             <Pay></Pay>
         </Route>

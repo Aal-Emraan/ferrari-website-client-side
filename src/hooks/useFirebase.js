@@ -10,13 +10,15 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
     //-------------------------------------
 
     // -------------- Login with email and password -----------
     const login = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
-            const user = result.user;
+            // const user = result.user;
+            // setUser(result.user);
         })
         .catch(error => {
             setError(error.message);
@@ -57,6 +59,13 @@ const useFirebase = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
         .then(result => {
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                  'content-type':'application/json'
+                },
+                body: JSON.stringify({displayName: result.user.displayName, email: result.user.email})
+              })
             const redirect_uri = location.state.from || '/';
             history.replace(redirect_uri);
         })
@@ -94,9 +103,19 @@ const useFirebase = () => {
         })
     },[auth])
 
+    // ---------------------------------------
+
+    // -------------- check is admin or not -------------
+    useEffect(() => {
+        fetch(`http://localhost:5000/isadmin/${user?.email}`)
+        .then(res => res.json())
+        .then(result => setIsAdmin(result.isAdmin));
+    },[user.email])
+
     return {
         user,
         error,
+        isAdmin,
         isLoading,
         login,
         emailAndPasswordSignIn,
