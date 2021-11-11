@@ -32,6 +32,7 @@ const CarDetails = () => {
         newInfo[field] = value;
         newInfo["car"] = car.name;
         newInfo['cost'] = car.price;
+        newInfo['status'] = 'Pending';
         setOrderInfo(newInfo);
     };
 
