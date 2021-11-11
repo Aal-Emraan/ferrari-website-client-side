@@ -6,9 +6,10 @@ import useAuth from "../../hooks/useAuth";
 const PrivateRoute = ({ children, ...rest }) => {
     const {user, isLoading} = useAuth();
 
-    if(isLoading){
+    if(user?.email === ''){
       return <LinearProgress color="error" />
     }
+    // console.log(user);
     return (
       <Route
         {...rest}

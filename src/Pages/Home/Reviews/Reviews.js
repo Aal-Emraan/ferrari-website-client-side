@@ -10,7 +10,7 @@ const Reviews = () => {
         </Typography>
       <Grid container spacing={5}>
         {
-            Array.apply(null, Array(3)).map(item => <Review></Review>)
+            Array.apply(null, Array(3)).map((item, index) => <Review key={index}></Review>)
         }
       </Grid>
     </Container>

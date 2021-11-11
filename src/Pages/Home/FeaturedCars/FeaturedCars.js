@@ -18,7 +18,7 @@ const FeaturedCars = () => {
 
             <Grid container spacing={3}>
                 {
-                    cars.slice(0,6).map(car => <Car car={car}></Car>)
+                    cars.slice(0,6).map(car => <Car car={car} key={car._id}></Car>)
                 }
             </Grid>
         </Container>

@@ -20,7 +20,7 @@ const Car = ({ car }) => {
           </Typography>
         </CardContent>
         <CardActions style={{display: 'flex', justifyContent: 'space-between'}}>
-          <Link to="/cardetails"><Button size="small">See Details</Button></Link>
+          <Link to={`/cardetails/${car._id}`}><Button size="small">See Details</Button></Link>
           <Rating name="read-only" value={4} readOnly />
         </CardActions>
       </Card>

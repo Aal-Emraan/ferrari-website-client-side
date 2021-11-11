@@ -9,7 +9,7 @@ const useFirebase = () => {
     // --------- All states here ----------
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     //-------------------------------------
 
@@ -101,10 +101,10 @@ const useFirebase = () => {
         onAuthStateChanged(auth, user => {
             if(user){
                 setUser(user);
-                setIsLoading(false)
+                setIsLoading(false);
             }else{
                 setUser({});
-                setIsLoading(true);
+                // setIsLoading(true);
             }
         })
     },[auth])
