@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -61,6 +61,7 @@ const ManageAllOrders = () => {
 
     return (
         <TableContainer component={Paper}>
+            <Typography variant="h4" align="center" sx={{mb:2}}>Manage All Orders</Typography>
       <Table aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -70,6 +71,7 @@ const ManageAllOrders = () => {
             <StyledTableCell align="right">Email</StyledTableCell>
             <StyledTableCell align="right">Address</StyledTableCell>
             <StyledTableCell align="right">Status</StyledTableCell>
+            <StyledTableCell align="right">Shipping Status</StyledTableCell>
             <StyledTableCell align="right">Cancel Order</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -84,8 +86,8 @@ const ManageAllOrders = () => {
               <StyledTableCell align="right">{row.email}</StyledTableCell>
               <StyledTableCell align="right">{row.address}</StyledTableCell>
               <StyledTableCell align="right">{row?.status}</StyledTableCell>
-              <Button variant="contained" onClick={() => shippedOrder(row._id)}>Shipped</Button>
-              <Button variant="contained" onClick={() => deleteOrder(row._id)}>Cancel Order</Button>
+              <StyledTableCell align="right"><Button variant="contained" onClick={() => shippedOrder(row._id)}>Shipped</Button></StyledTableCell>
+              <StyledTableCell align="right"><Button variant="contained" onClick={() => deleteOrder(row._id)}>Cancel Order</Button></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
