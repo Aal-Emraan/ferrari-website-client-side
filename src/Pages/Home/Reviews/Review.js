@@ -1,7 +1,8 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
 
-const Review = () => {
+const Review = ({review}) => {
+
     return (
         <Grid item sm={12} md={4}>
           <Card sx={{ maxWidth: 345 }}>
@@ -9,18 +10,17 @@ const Review = () => {
               <CardMedia
                 component="img"
 
-                image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                image={review.img}
                 alt="green iguana"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+                  {review.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  {review.review}
                 </Typography>
-                <Rating name="read-only" value={4} readOnly />
+                <Rating name="read-only" value={review.rating} readOnly />
               </CardContent>
             </CardActionArea>
           </Card>

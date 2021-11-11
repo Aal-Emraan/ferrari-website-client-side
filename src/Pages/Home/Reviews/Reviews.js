@@ -1,8 +1,17 @@
 import { Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Review from "./Review";
 
 const Reviews = () => {
+
+  const [allReviews, setAllReviews] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/allreviews')
+    .then(res => res.json())
+    .then(data => setAllReviews(data))
+  },[])
+  
   return (
     <Container sx={{ my: 5 }}>
         <Typography variant="h3" sx={{mb:3}}>
@@ -10,7 +19,7 @@ const Reviews = () => {
         </Typography>
       <Grid container spacing={5}>
         {
-            Array.apply(null, Array(3)).map((item, index) => <Review key={index}></Review>)
+            allReviews.map(item => <Review review={item} key={item._id}></Review>)
         }
       </Grid>
     </Container>
