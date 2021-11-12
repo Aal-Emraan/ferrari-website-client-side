@@ -13,7 +13,7 @@ const AddProduct = () => {
     }
 
     const handleOnSubmit = e => {
-        fetch('http://localhost:5000/addcar', {
+        fetch('https://safe-scrubland-04558.herokuapp.com/addcar', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

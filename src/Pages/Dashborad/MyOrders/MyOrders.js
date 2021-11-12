@@ -34,7 +34,7 @@ const MyOrders = () => {
     const {user} = useAuth();
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/myorders/${user.email}`)
+        fetch(`https://safe-scrubland-04558.herokuapp.com/myorders/${user.email}`)
         .then(res => res.json())
         .then(data => setMyOrders(data))
     },[])
@@ -42,7 +42,7 @@ const MyOrders = () => {
     const deleteOrder = id => {
         const confirmatin = window.confirm('Are you sure?');
         if(confirmatin){
-            fetch(`http://localhost:5000/deleteorder/${id}`, {
+            fetch(`https://safe-scrubland-04558.herokuapp.com/deleteorder/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

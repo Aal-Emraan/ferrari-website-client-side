@@ -7,7 +7,7 @@ const MakeAdmin = () => {
     const [email, setEmail] = useState('');
 
     const handleOnSubmit = e => {
-        fetch(`http://localhost:5000/makeadmin?email=${email}`,{
+        fetch(`https://safe-scrubland-04558.herokuapp.com/makeadmin?email=${email}`,{
             method: 'PUT',
             headers: {
                 'content-type':'application/json'

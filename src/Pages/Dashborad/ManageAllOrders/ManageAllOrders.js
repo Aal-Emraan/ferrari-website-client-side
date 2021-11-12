@@ -34,13 +34,13 @@ const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://safe-scrubland-04558.herokuapp.com/allorders')
         .then(res => res.json())
         .then(data => setAllOrders(data))
     },[allOrders])
 
     const shippedOrder = id => {
-            fetch(`http://localhost:5000/updatestatus/${id}`, {
+            fetch(`https://safe-scrubland-04558.herokuapp.com/updatestatus/${id}`, {
                 method: 'PUT'
             })
             .then(res => res.json())
@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
     const deleteOrder = id => {
         const confirmatin = window.confirm('Are you sure?');
         if(confirmatin){
-            fetch(`http://localhost:5000/deleteorder/${id}`, {
+            fetch(`https://safe-scrubland-04558.herokuapp.com/deleteorder/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

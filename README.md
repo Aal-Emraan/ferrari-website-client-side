@@ -4,7 +4,7 @@ Click here to purchase your dream ferrari [Ferrari](https://assingment-12.web.ap
 
 ## Here you will find
 
-In the project directory, you can run:
+In this website, you can get:
 
 ### `All latest ferrari cars`
 ### `Best offers to cost you less`

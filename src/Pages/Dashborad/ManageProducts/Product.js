@@ -6,7 +6,7 @@ const Product = ({car}) => {
     const handleDelete = id => {
         const confirmation = window.confirm('Are you sure?')
         if(confirmation){
-            fetch(`http://localhost:5000/deletecar/${id}`, {
+            fetch(`https://safe-scrubland-04558.herokuapp.com/deletecar/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

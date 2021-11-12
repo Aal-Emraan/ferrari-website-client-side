@@ -12,7 +12,7 @@ const CarDetails = () => {
     const [car, setCar] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singlecar/${id}`)
+        fetch(`https://safe-scrubland-04558.herokuapp.com/singlecar/${id}`)
             .then((res) => res.json())
             .then((data) => setCar(data));
     }, [id]);
@@ -37,7 +37,7 @@ const CarDetails = () => {
     };
 
     const handleOnSubmit = (e) => {
-        fetch('http://localhost:5000/order', {
+        fetch('https://safe-scrubland-04558.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

@@ -44,7 +44,7 @@ const useFirebase = () => {
                 displayName: name
             })
             console.log(result.user);
-            fetch('http://localhost:5000/user', {
+            fetch('https://safe-scrubland-04558.herokuapp.com/user', {
                 method: 'POST',
                 headers: {
                   'content-type':'application/json'
@@ -65,7 +65,7 @@ const useFirebase = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
         .then(result => {
-            fetch('http://localhost:5000/user', {
+            fetch('https://safe-scrubland-04558.herokuapp.com/user', {
                 method: 'POST',
                 headers: {
                   'content-type':'application/json'
@@ -119,7 +119,7 @@ const useFirebase = () => {
 
     // -------------- check is admin or not -------------
     useEffect(() => {
-        fetch(`http://localhost:5000/isadmin/${user?.email}`)
+        fetch(`https://safe-scrubland-04558.herokuapp.com/isadmin/${user?.email}`)
         .then(res => res.json())
         .then(result => setIsAdmin(result.isAdmin));
     },[user.email])
