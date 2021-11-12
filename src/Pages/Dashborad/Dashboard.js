@@ -34,7 +34,6 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddProduct from './AddProduct/AddProduct';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
-import logo from '../../img/logo.png'
 import useAuth from '../../hooks/useAuth';
 
 const drawerWidth = 240;
@@ -66,10 +65,10 @@ function Dashboard(props) {
 //   ['Pay', 'My Orders', 'Review', 'Log Out']
 
   const drawer = (
-    <div>
+    <div style={{backgroundColor: '#eee'}}>
       <Toolbar style={{background: '#AD0C0C'}}>
           <Box style={{display: 'flex', alignItems: 'center', color: 'white'}}>
-              <img src={logo} alt="logo" style={{width: '30%'}} />
+              <img src="https://i.ibb.co/WpJP9F7/logo.png" alt="logo" style={{width: '30%'}} />
               <Typography variant="h4">Ferrari</Typography>
           </Box>
       </Toolbar>
@@ -78,14 +77,14 @@ function Dashboard(props) {
                     <HomeIcon/>
                     <Typography variant="h6" sx={{ml:4}}>Home</Typography>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/dashboard" style={{display: 'flex', alignItems: 'center',margin: '0 0px', color: '#AD0C0C', textDecoration: 'none'}}>
                 <ListItem button>
                     <ListItemIcon>
                     <ExitToAppIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Dashboard"/>
                 </ListItem>
-      </Link>
+            </Link>
       {!isAdmin ? 
       <>
       <List>
