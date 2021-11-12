@@ -4,10 +4,11 @@ import React from 'react';
 const Review = ({review}) => {
 
     return (
-        <Grid item sm={12} md={4}>
-          <Card sx={{ maxWidth: 345 }}>
+        <Grid item sm={12} md={4} style={{textAlign: 'center'}}>
+          <Card>
             <CardActionArea>
               <CardMedia
+              style={{width: '170px', height: '170px',borderRadius: "1in", margin: '20px auto'}}
                 component="img"
 
                 image={review.img}

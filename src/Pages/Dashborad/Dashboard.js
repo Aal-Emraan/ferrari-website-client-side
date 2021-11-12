@@ -35,6 +35,7 @@ import AddProduct from './AddProduct/AddProduct';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import ManageProducts from './ManageProducts/ManageProducts';
 import useAuth from '../../hooks/useAuth';
+import DashboardInfo from './DashboardInfo/DashboardInfo';
 
 const drawerWidth = 240;
 
@@ -201,7 +202,7 @@ function Dashboard(props) {
         
         <Switch>
         <Route exact path="/dashboard">
-          <Typography variant="h5">Hello bro</Typography>
+          <DashboardInfo></DashboardInfo>
         </Route>
         <Route exact path={`${path}/pay`}>
             <Pay></Pay>

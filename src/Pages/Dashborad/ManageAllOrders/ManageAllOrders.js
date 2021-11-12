@@ -37,7 +37,7 @@ const ManageAllOrders = () => {
         fetch('http://localhost:5000/allorders')
         .then(res => res.json())
         .then(data => setAllOrders(data))
-    },[])
+    },[allOrders])
 
     const shippedOrder = id => {
             fetch(`http://localhost:5000/updatestatus/${id}`, {

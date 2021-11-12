@@ -1,4 +1,5 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Button, Container, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 
 const MakeAdmin = () => {
@@ -13,15 +14,20 @@ const MakeAdmin = () => {
             }
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => window.alert('Admin added succesfully!'))
         e.preventDefault();
     }
     return (
         <Container>
+            <Box style={{margin:'100px',backgroundColor: 'goldenrod', padding: '20px', borderRadius: '10px'}}>
+                <Typography variant="h4">Make Admin</Typography>
             <form onSubmit={handleOnSubmit}>
-                <TextField onBlur={e => setEmail(e.target.value)} label="Email" variant="standard" />
+                <TextField onBlur={e => setEmail(e.target.value)} label="Email" variant="standard" style={{width:"100%"}} />
+                <br />
+                <br />
                 <Button type="submit" variant="contained">Make Admin</Button>
             </form>
+            </Box>
         </Container>
     );
 };

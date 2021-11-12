@@ -104,7 +104,7 @@ const Navigation = () => {
                             Ferrari
                         </Typography>
                     </>
-                    <Box sx={{ display: { sm: "none", md: "block" } }}>
+                    <Box sx={{ display: { xs: "none", md: "block" } }}>
                         <Box sx={{ display: "flex" }}>
                             <NavLink
                                 to="/"

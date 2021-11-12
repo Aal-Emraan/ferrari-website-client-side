@@ -1,4 +1,4 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Button, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const AddProduct = () => {
@@ -20,13 +20,16 @@ const AddProduct = () => {
             },
             body: JSON.stringify(newCar)
         })
-        .then(result =>{})
+        .then(result =>{
+            alert('New car added succesfully!')
+        })
         e.preventDefault();
     }
 
     console.log(newCar);
     return (
-        <Container>
+        <Paper sx={{m:5,p:5}}>
+            <Typography variant="h4">Add New Car</Typography>
             <form onSubmit={handleOnSubmit}>
                 <TextField
                 id="standard-basic"
@@ -34,7 +37,7 @@ const AddProduct = () => {
                 label="Car name"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -42,7 +45,7 @@ const AddProduct = () => {
                 label="Price"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -50,7 +53,7 @@ const AddProduct = () => {
                 label="Engine"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -58,7 +61,7 @@ const AddProduct = () => {
                 label="Power"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -67,7 +70,7 @@ const AddProduct = () => {
                 label="First Hundred time in second"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -76,7 +79,7 @@ const AddProduct = () => {
                 label="Top Speed"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -84,7 +87,7 @@ const AddProduct = () => {
                 label="Image URL"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
                 <TextField
                 id="standard-basic"
@@ -92,11 +95,13 @@ const AddProduct = () => {
                 label="Description"
                 variant="standard"
                 onBlur={handleOnBlur}
-                style={{width:'70%', mx: 'auto'}}
+                style={{width:'100%', marginBottom: '15px'}}
                 />
-                <Button type="submit">Add New Car</Button>
+                <br />
+                <br />
+                <Button variant="contained" type="submit">Add New Car</Button>
             </form>
-        </Container>
+        </Paper>
     );
 };
 
