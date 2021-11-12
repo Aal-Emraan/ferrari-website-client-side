@@ -9,12 +9,13 @@ const useFirebase = () => {
     // --------- All states here ----------
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
     //-------------------------------------
 
     // -------------- Login with email and password -----------
     const login = (email, password, history, location) => {
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
             // const user = result.user;
@@ -25,6 +26,7 @@ const useFirebase = () => {
         .catch(error => {
             setError(error.message);
         })
+        .finally(()=>setIsLoading(false))
     };
     //---------------------------- * --------------------------
 
@@ -35,6 +37,7 @@ const useFirebase = () => {
     // email password sign in
 
     const emailAndPasswordSignIn = (email, password, name, history) => {
+        setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             updateProfile(auth.currentUser, {
@@ -53,6 +56,7 @@ const useFirebase = () => {
         .catch(error => {
             setError(error.message);
         })
+        .finally(() => setIsLoading(false))
     };
 
     // google sign in
@@ -85,6 +89,7 @@ const useFirebase = () => {
     // ---------- sign out ---------
 
     const logout = () => {
+        setIsLoading(true);
         signOut(auth)
         .then(() => {
 
@@ -92,12 +97,12 @@ const useFirebase = () => {
         .catch(error => {
             setError(error.message);
         })
+        .finally(() => setIsLoading(false))
     };
     // --------------- * ---------------
 
     // ------------ track user changes -------
     useEffect(() => {
-        setIsLoading(true);
         onAuthStateChanged(auth, user => {
             if(user){
                 setUser(user);
@@ -106,6 +111,7 @@ const useFirebase = () => {
                 setUser({});
                 // setIsLoading(true);
             }
+            setIsLoading(false);
         })
     },[auth])
 

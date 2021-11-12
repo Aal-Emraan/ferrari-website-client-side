@@ -9,7 +9,7 @@ const ManageProducts = () => {
     },[])
     return (
         <div>
-            <h1>Manage all products</h1>
+            <h1>Manage all products: {cars.length}</h1>
         </div>
     );
 };
