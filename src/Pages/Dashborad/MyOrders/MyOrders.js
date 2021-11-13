@@ -37,7 +37,7 @@ const MyOrders = () => {
         fetch(`https://safe-scrubland-04558.herokuapp.com/myorders/${user.email}`)
         .then(res => res.json())
         .then(data => setMyOrders(data))
-    },[])
+    },[myOrders])
 
     const deleteOrder = id => {
         const confirmatin = window.confirm('Are you sure?');
