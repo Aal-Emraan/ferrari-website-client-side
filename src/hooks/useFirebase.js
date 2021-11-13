@@ -20,7 +20,12 @@ const useFirebase = () => {
         .then(result => {
             // const user = result.user;
             // setUser(result.user);
-            const redirect_uri = location?.state?.from || '/';
+            let redirect_uri = location?.state?.from || '/';
+            console.log(isAdmin);
+            if(isAdmin){
+                console.log(isAdmin);
+                redirect_uri = '/dashboard';
+            }
             history.push(redirect_uri);
         })
         .catch(error => {

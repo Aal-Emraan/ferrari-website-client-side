@@ -11,7 +11,7 @@ const Review = ({review}) => {
               style={{width: '170px', height: '170px',borderRadius: "1in", margin: '20px auto'}}
                 component="img"
 
-                image={review.img}
+                image={review.img ? review.img : 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png'}
                 alt="green iguana"
               />
               <CardContent>
