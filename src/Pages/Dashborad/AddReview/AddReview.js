@@ -5,8 +5,8 @@ import useAuth from "../../../hooks/useAuth";
 const AddReview = () => {
     const { user } = useAuth();
 
-    const [value, setValue] = useState(5);
-    const [review, setReview] = useState({name: user.displayName, rating: value});
+    const [ratingValue, setValue] = useState(5);
+    const [review, setReview] = useState({name: user.displayName});
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -17,12 +17,13 @@ const AddReview = () => {
     }
 
     const handleOnSubmit = e => {
+        const reviewWithRating = {...review, rating: ratingValue}
         fetch('https://safe-scrubland-04558.herokuapp.com/review',{
             method: 'POST',
             headers: {
                 'content-type':'application/json'
             },
-            body: JSON.stringify(review)
+            body: JSON.stringify(reviewWithRating)
         })
         .then(res => res.json())
         .then(data => alert('Review added!'))
@@ -52,7 +53,7 @@ const AddReview = () => {
                 />
                 <Typography component="legend">Rating</Typography>
                 <Rating
-                    value={value}
+                    value={ratingValue}
                     onChange={(event, newValue) => {
                         setValue(newValue);
                     }}

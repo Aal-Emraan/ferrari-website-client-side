@@ -4,9 +4,9 @@ import Typography from '@mui/material/Typography'
 import React, { useState } from 'react';
 
 const DashboardInfo = () => {
-    const [user, setUser] = useState(0);
-    const [order, setOrder] = useState(0);
-    const [car, setCar] = useState(0);
+    // const [user, setUser] = useState(0);
+    // const [order, setOrder] = useState(0);
+    // const [car, setCar] = useState(0);
     return (
         <Box sx={{p:5}}>
             <Grid container spacing={3}>
