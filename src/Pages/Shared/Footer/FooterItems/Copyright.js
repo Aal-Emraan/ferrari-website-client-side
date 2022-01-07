@@ -7,15 +7,14 @@ const Copyright = () => {
       style={{
         textAlign: "center",
         color: "white",
-        borderTop: "2px solid gray",
-        padding: "20px 0",
+        padding: "30px 0",
       }}
     >
       <Typography variant="h6">
         Ferrari S.p.A. Copyright © 2022 - All Rights Reserved Powered by YOOX
         NET-A-PORTER GROUP
       </Typography>
-      <Typography>
+      <Typography style={{ marginTop: "16px" }}>
         <span>Site map</span>
         <span style={{ marginLeft: "20px" }}>Cookie Policy</span>
         <span style={{ marginLeft: "20px" }}>Privacy Policy</span>
