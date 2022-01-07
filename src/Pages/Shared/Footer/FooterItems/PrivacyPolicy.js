@@ -1,17 +1,10 @@
+import { Grid } from "@mui/material";
 import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "#303030",
-        color: "white",
-      }}
-    >
-      <div>
+    <Grid container spacing={3} style={{ color: "white" }}>
+      <Grid item xs={12} md={6}>
         <ul style={{ display: "flex", listStyle: "none" }}>
           <li style={{ marginRight: "20px", fontSize: "12px" }}>Legal</li>
           <li style={{ marginRight: "20px", fontSize: "12px" }}>
@@ -30,11 +23,11 @@ const PrivacyPolicy = () => {
           <li style={{ marginRight: "20px", fontSize: "12px" }}>Career</li>
           <li style={{ fontSize: "12px" }}>Corporate</li>
         </ul>
-      </div>
-      <div>
-        <h3 style={{ marginRight: "20px" }}>INTERNATIONAL</h3>
-      </div>
-    </div>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <h3 style={{ marginRight: "20px", float: "right" }}>INTERNATIONAL</h3>
+      </Grid>
+    </Grid>
   );
 };
 
