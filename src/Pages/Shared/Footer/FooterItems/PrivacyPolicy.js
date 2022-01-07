@@ -3,7 +3,14 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <Grid container spacing={3} style={{ color: "white" }}>
+    <Grid
+      container
+      style={{
+        color: "white",
+        backgroundColor: "#303030",
+        borderRadius: "5px",
+      }}
+    >
       <Grid item xs={12} md={6}>
         <ul style={{ display: "flex", listStyle: "none" }}>
           <li style={{ marginRight: "20px", fontSize: "12px" }}>Legal</li>
