@@ -1,16 +1,22 @@
-import { Container, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+import { Container, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+import Copyright from "./FooterItems/Copyright";
+import InfoArea from "./FooterItems/InfoArea";
+import PrivacyPolicy from "./FooterItems/PrivacyPolicy";
 
 const Footer = () => {
-    return (
-        <Box style={{background: '#AD0C0C'}}>
-            <Container style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '15px 0'}}>
-            <Typography variant="h4" style={{color: 'white'}}>Ferrari</Typography>
-            <Typography variant="h6" style={{color: 'white'}}>&copy; Copyright. All rights reserved.</Typography>
-            </Container>
-        </Box>
-    );
+  return (
+    <footer>
+      <Box style={{ background: "#AD0C0C" }}>
+        <Container style={{}}>
+          <InfoArea />
+          <PrivacyPolicy />
+          <Copyright />
+        </Container>
+      </Box>
+    </footer>
+  );
 };
 
 export default Footer;
